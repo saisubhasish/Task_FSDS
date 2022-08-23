@@ -22,7 +22,7 @@ def get_data_from():
     try:
         connection = conn.connect(host="localhost", user="root", password="Root_mysql", database=db)
         cursor = connection.cursor(dictionary=True)
-        cur.execute(f'select * from {tn}')
+        cursor.execute(f'select * from {tn}')
         data = cursor.fetchall()
         connection.commit()
         connection.close()
