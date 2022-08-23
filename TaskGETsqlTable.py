@@ -20,12 +20,12 @@ def get_data_from():
     db = request.args.get('db')
     tn = request.args.get('tn')
     try:
-        connection = conn.connect(host="localhost", user="root", password="Root_mysql", database=db)
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute(f'select * from {tn}')
-        data = cursor.fetchall()
-        connection.commit()
-        connection.close()
+        con = conn.connect(host="localhost", user="root", password="Root_mysql", database=db)
+        cur = con.cursor(dictionary=True)
+        cur.execute(f'select * from {tn}')
+        data = cur.fetchall()
+        con.commit()
+        con.close()
     except Exception as e:
         return jsonify(str(e))
     return jsonify(data)
